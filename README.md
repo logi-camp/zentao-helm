@@ -1,7 +1,7 @@
 Helm chart for <b>Zentao</b> using `easysoft/quickon-zentao` docker image
 
 Requirements:
-- A volume provisioner (like longhorn, openebs ors s3)
+- A volume provisioner (like longhorn, openebs or s3)
 - Ingress provider (like haproxy, nginx or traefik)
 - Certificate Manager (cert-manager.io)
 

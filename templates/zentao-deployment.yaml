@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zentao-app
+  labels:
+    app: zentao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zentao
+  template:
+    metadata:
+      labels:
+        app: zentao
+    spec:
+      containers:
+        - name: zentao
+          command: [ "sh", "-c", "rm /apps/zentao/www/install.php /apps/zentao/www/upgrade.php && /usr/bin/entrypoint.sh" ]
+          image: "{{ .Values.zentao.repository.image }}:{{ .Values.zentao.repository.tag }}"
+          envFrom:
+            - configMapRef:
+                name: zentao-app
+          volumeMounts:
+            - name: zentao-data
+              mountPath: /data
+              subPath: zentao-data
+          ports:
+            - containerPort: 80  
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: zentao-data
+          persistentVolumeClaim:
+            claimName: zentao-data
+      restartPolicy: Always

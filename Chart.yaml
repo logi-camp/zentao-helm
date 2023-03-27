@@ -1,0 +1,10 @@
+name: .
+description: Helm chart for zentao using `easysoft/quickon-zentao` docker image
+version: 0.0.1
+apiVersion: v1
+keywords:
+  - .
+dependencies:
+- name: mysql
+  version: "9.7.0"
+  repository: "https://charts.bitnami.com/bitnami"

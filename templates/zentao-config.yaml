@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: zentao-app
+data:
+    APP_DEFAULT_PORT: "80"
+    APP_DOMAIN: {{ quote .Values.zentao.domain }}
+    CI_PASSWORD: {{ quote .Values.zentao.ci.password }}
+    CI_PROTOCOL: {{ quote .Values.zentao.ci.protocol }}
+    CI_TYPE: {{ quote .Values.zentao.ci.type }}
+    CI_URL: {{ quote .Values.zentao.ci.url }}
+    CI_USERNAME: {{ quote .Values.zentao.ci.username }}
+    DEBUG: {{ quote .Values.zentao.debug }}
+    EASYSOFT_DEBUG: {{ quote .Values.zentao.easysoftDebug }}
+    GIT_DOMAIN: {{ quote .Values.zentao.git.domain }}
+    GIT_INSTANCE_NAME: {{ quote .Values.zentao.git.instanceName }}
+    GIT_PASSWORD: {{ quote .Values.zentao.git.password }}
+    GIT_PROTOCOL: {{quote .Values.zentao.git.protocol }}
+    GIT_TYPE: {{ quote .Values.zentao.git.type }}
+    GIT_USERNAME: {{ quote .Values.zentao.git.username }}
+    IS_CONTAINER: "true"
+    LDAP_ENABLED: {{ quote .Values.zentao.ldap.enabled }}
+    LINK_CI: {{ quote .Values.zentao.ci.link }}
+    LINK_GIT: {{ quote .Values.zentao.ci.link }}
+    MYSQL_DB: zentao
+    MYSQL_PORT: "3306"
+    MYSQL_USER: root
+    MYSQL_HOST: "{{ .Release.Name }}-mysql"
+    MYSQL_PASSWORD: {{ quote .Values.mysql.auth.rootPassword }}
+    PHP_MAX_EXECUTION_TIME: {{ quote .Values.zentao.phpConfig.MAX_EXECUTION_TIME }}
+    PHP_MEMORY_LIMIT: {{ quote .Values.zentao.phpConfig.MEMORY_LIMIT }}
+    PHP_POST_MAX_SIZE: {{ quote .Values.zentao.phpConfig.POST_MAX_SIZE }}
+    PHP_UPLOAD_MAX_FILESIZE: {{ quote .Values.zentao.phpConfig.UPLOAD_MAX_FILESIZE }}
+    PROTOCOL_TYPE: {{ quote .Values.zentao.protocol }}
+    SMTP_ENABLED: {{ quote .Values.zentao.smtp.enabled }}
+    SMTP_FROMNAME: {{ quote .Values.zentao.smtp.fromName }}
+    SMTP_HOST: {{ quote .Values.zentao.smtp.host }}
+    SMTP_PASS: {{ quote .Values.zentao.smtp.password }}
+    SMTP_PORT: {{ quote .Values.zentao.smtp.port }}
+    SMTP_USER: {{ quote .Values.zentao.smtp.user }}

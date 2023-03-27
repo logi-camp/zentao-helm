@@ -1,0 +1,48 @@
+zentao:
+  persistence:
+    capacity: 8Gi
+  repository:
+    image: easysoft/quickon-zentao
+    tag: latest
+  domain: zentao.example.com
+  protocol: https
+  ingressClass: haproxy
+  clusterCertificateIssuer: letsencrypt-prod
+  git:
+    domain: git.example.com
+    instanceName: Example Source Management
+    password: 'password'
+    protocol: https
+    type: gitea
+    username: zentao
+    link: false
+  ci:
+    password: password
+    protocol: https
+    type: gitlab
+    url: gitlab.example.com
+    username: zentao
+    link: false
+  smtp:
+    host: mail.example.com
+    fromName: Zentao Example
+    enabled: true
+    user: zentao@example.com
+    port: '587'
+    password: 'bi5PhieQu;o3ieK6'
+  phpConfig:
+    MAX_EXECUTION_TIME: "120"
+    MEMORY_LIMIT: 512M
+    POST_MAX_SIZE: 128M
+    UPLOAD_MAX_FILESIZE: 128M
+  ldap:
+    enabled: false
+  debug: "1"
+  easysoftDebug: true
+
+mysql:
+  auth:
+    rootPassword: 'goB8ua@Z7oot=a4e'
+    username: 'zentao'
+    password: 'goB8ua@Z7oot=a4e'
+    database: 'zentao'

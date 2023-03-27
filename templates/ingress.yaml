@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zentao
+  annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.zentao.clusterCertificateIssuer }}
+    kubernetes.io/ingress.class: {{ .Values.zentao.ingressClass }}
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.zentao.domain }}
+      secretName: {{ regexReplaceAll "[\\.]+" .Values.zentao.domain "-" }}
+  rules:
+  - host: {{ .Values.zentao.domain }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: zentao
+            port:
+              number: 80

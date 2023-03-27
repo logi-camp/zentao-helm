@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
         - name: zentao
-          command: [ "sh", "-c", "rm /apps/zentao/www/install.php /apps/zentao/www/upgrade.php && /usr/bin/entrypoint.sh" ]
           image: "{{ .Values.zentao.repository.image }}:{{ .Values.zentao.repository.tag }}"
           envFrom:
             - configMapRef:

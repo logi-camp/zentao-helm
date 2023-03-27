@@ -1,4 +1,4 @@
-name: .
+name: zentao
 description: Helm chart for zentao using `easysoft/quickon-zentao` docker image
 version: 0.0.1
 apiVersion: v1

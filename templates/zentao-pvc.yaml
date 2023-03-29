@@ -8,3 +8,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.zentao.persistence.capacity }}
+      storageClass: {{ .Values.zentao.persistence.storageClass }}
